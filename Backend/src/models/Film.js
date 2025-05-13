@@ -28,11 +28,7 @@ filmDirector: {
 
 gender:{
 type:String,
-require:true,
-enum :{
-    values: ["Femenino", "Masculino"],
-    message:"El género solo puede ser femenino o masculino"
-}
+require:true
 },
 year:{
     type:Number,
