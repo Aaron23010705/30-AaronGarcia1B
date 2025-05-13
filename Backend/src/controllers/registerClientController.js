@@ -41,7 +41,7 @@ registerClientsController.register = async (req, res) => {
       service: "gmail",
       auth: {
         user: config.userEmail.email_user,
-        pass: config.userEmail.email_pass,
+        pass: config.userEmail.password_user,
       },
     });
 
@@ -54,8 +54,8 @@ registerClientsController.register = async (req, res) => {
         vence en dos horas`,
     };
 
-    // 3- Enviar correo
     transporter.sendMail(mailOptions, (error, info) => {
+
       if (error) return res.json({ message: "Error" });
 
       console.log("Correo enviado" + info.response);
@@ -65,7 +65,7 @@ registerClientsController.register = async (req, res) => {
       message: "Client registered. Please verify your email whit the code sent",
     });
   } catch (error) {
-    res.json({ message: "Error" + error });
+    console.log("ERRRROR"+error)
   }
 };
 
@@ -77,16 +77,15 @@ registerClientsController.verifyCodeEmail = async (req, res) => {
   try {
     const decoded = jsonwebtoken.verify(token, config.JWT.secret);
     const { email, verificationCode: storedCode } = decoded;
-
     if (verificationCode !== storedCode) {
-      return res.json({ message: "Invalid code" });
-    }
+        return res.json({ message: "Invalid code" });
+      }
 
     const client = await clientsModel.findOne({ email });
-    client.isVerified = true;
     await client.save();
 
     res.json({ message: "Email verified successfull" });
+    
 
     res.clearCookie("VerificationToken");
   } catch (error) {
