@@ -5,9 +5,6 @@ correo string
 contrasenia string
 telefono string
 direccion string
-puesto string
-fecha_contratacion date,
-salario number,
 activo boolean
 */
 
@@ -17,26 +14,15 @@ type:String,
  require:true,
  maxLength:100
 },
-lastName:{
-    type:String,
-    require:true,
-    maxLenght:100
-},
-birthday: {
-    type:String,
-    require:true,
-    maxLenght:100
-},
-
 email:{
-type:String,
-require:true,
-maxLenght:100
-},
-password:{
     type:String,
-     require:true,
-     maxLenght:100
+    require:true,
+    maxLenght:100
+},
+password: {
+    type:String,
+    require:true,
+    maxLenght:100
 },
 
 telephone:{
@@ -44,12 +30,12 @@ type:String,
 require:true,
 maxLenght:10
 },
-dui:{
+adress:{
 type:String,
 require:true,
-maxLenght:15
+maxLenght:250
 },
-isVerified:{
+active:{
     type:Boolean,
     require:true
 
