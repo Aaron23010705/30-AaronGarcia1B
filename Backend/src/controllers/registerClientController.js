@@ -25,7 +25,7 @@ registerClientsController.register = async (req, res) => {
     await newClient.save();
 
     jsonwebtoken.sign(
-      { id: newEmployee._id },
+      { id: newClient._id },
       config.JWT.secret,
       { expiresIn: config.JWT.expiresIN },
       (error, token) => {
