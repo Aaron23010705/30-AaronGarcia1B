@@ -8,7 +8,7 @@ const transporter = nodemailer.createTransport({
   secure: true,
   auth: {
     user: config.userEmail.email_user,
-    pass: config.userEmail.email_pass,
+    pass: config.userEmail.password_user,
   },
 });
 
@@ -25,7 +25,7 @@ const sendEmail = async (to, subject, text, html) => {
 
     return info;
   } catch (error) {
-    console.log("Error sending email");
+    console.log("Error sending email" + error);
   }
 };
 

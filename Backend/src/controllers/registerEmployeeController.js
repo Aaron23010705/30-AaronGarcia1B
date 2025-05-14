@@ -27,7 +27,7 @@ registerEmployeesController.register = async (req, res) => {
     jsonwebtoken.sign(
       { id: newEmployee._id },
       config.JWT.secret,
-      { expiresIn: config.JWT.expiresIn },
+      { expiresIn: config.JWT.expiresIN },
       (error, token) => {
         if (error) console.log(error);
         res.cookie("authToken", token);

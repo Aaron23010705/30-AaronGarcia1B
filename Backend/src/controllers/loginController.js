@@ -53,7 +53,7 @@ loginController.login = async (req, res) => {
     jsonwebtoken.sign(
       { id: userFound._id, userType },
       config.JWT.secret,
-      { expiresIn: config.JWT.expiresIn },
+      { expiresIn: config.JWT.expiresIN },
       (error, token) => {
         if (error) console.log(error);
 
